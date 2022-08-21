@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Travel Thru Air</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid bg-primary text-white min-vh-100"><h1 align="center">Welcome <span th:text="${session.username}"></span></h1>
+<br>
+<br>
+<div class="container-fluid bg-light min-vh-100">
+<br>
+<a class="btn btn-danger" href="http://localhost:8080/Travel-Thru-Air/logout" style="float:right;" role="button">Log Out</a>
+<br>
+<br>
+<a class="btn btn-dark" href="http://localhost:8080/Travel-Thru-Air/AddFlight" style="float:right;" role="button">Add New Flight</a>
+<br>
+<br>
+<a class="btn btn-warning" href="http://localhost:8080/Travel-Thru-Air/RemoveFlight" style="float:right;" role="button">Remove Flight</a>
+<br>
+<br>
+<form action="setup" method="post">
+<div class="mb-3">
+    <label for="flightID" class="form-label"><font color="black">Flight ID</font></label>
+    <input type="text" name="flightid" placeholder="Enter the flight id" required class="form-control" id="flightID">
+  </div>
+  <div class="mb-3">
+    <label for="cost" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="cost" placeholder="Cost in rupees" required class="form-control" id="cost">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="expirytime"><font color="black">Expiry Time</font></label>
+    <input type="text" name="valid_time" placeholder="YYYY-MM-DD HH:MI:SS" required class="form-control" id="expirytime">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

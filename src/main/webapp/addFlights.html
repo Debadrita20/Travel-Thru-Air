@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Travel Thru Air</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid bg-primary text-white min-vh-100"><h1 align="center">Welcome <span th:text="${session.username}"></span></h1>
+<br>
+<br>
+<div class="container-fluid bg-light min-vh-100">
+<br>
+<a class="btn btn-danger" href="http://localhost:8080/Travel-Thru-Air/logout" style="float:right;" role="button">Log Out</a>
+<br>
+<br>
+<a class="btn btn-warning" href="http://localhost:8080/Travel-Thru-Air/RemoveFlight" style="float:right;" role="button">Remove Flight</a>
+<br>
+<br>
+<a class="btn btn-dark" href="http://localhost:8080/Travel-Thru-Air/setup" style="float:right;" role="button">Set Up New Deal</a>
+<br>
+<br>
+<form action="AddFlight" method="post" class="row g-3">
+  <div class="col-md-6">
+    <label for="inputID" class="form-label"><font color="black">Flight ID</font></label>
+    <input type="text" name="flightid" placeholder="Enter the flight id" required class="form-control" id="inputID">
+  </div>
+  <div class="col-md-6">
+    <label for="inputCost" class="form-label"><font color="black">Total Cost</font></label>
+    <input type="text" name="cost" placeholder="Total Cost in rupees" required class="form-control" id="inputCost">
+  </div>
+  <div class="col-md-6">
+    <label for="inputDCity" class="form-label"><font color="black">Departure City</font></label>
+    <input type="text" name="dc" required class="form-control" id="inputDCity">
+  </div>
+  <div class="col-md-6">
+    <label for="inputACity" class="form-label"><font color="black">Arrival City</font></label>
+    <input type="text" name="ac" required class="form-control" id="inputACity">
+  </div>
+  <div class="col-md-6">
+    <label for="inputDTime" class="form-label"><font color="black">Departure Time</font></label>
+    <input type="text" name="dt" placeholder="YYYY-MM-DD HH:MI:SS" required class="form-control" id="inputDTime">
+  </div>
+  <div class="col-md-6">
+    <label for="inputATime" class="form-label"><font color="black">Arrival Time</font></label>
+    <input type="text" name="at" placeholder="YYYY-MM-DD HH:MI:SS" required class="form-control" id="inputATime">
+  </div>
+  <div class="col-md-12">
+    <label for="inputNIC" class="form-label"><font color="black">No. of intermediate cities</font></label>
+    <input type="text" name="n_ic" placeholder="Maximum 10" required class="form-control" id="inputNIC">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICity1" class="form-label"><font color="black">Intermediate City 1</font></label>
+    <input type="text" name="ic1" class="form-control" id="inputICity1">
+  </div>
+  <div class="col-md-4">
+    <label for="inputITime1" class="form-label"><font color="black">Corresponding Time</font></label>
+    <input type="text" name="ic_time1" placeholder="YYYY-MM-DD HH:MI:SS" class="form-control" id="inputITime1">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICost1" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="ic_c1" placeholder="Cost in rupees" class="form-control" id="inputICost1">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICity2" class="form-label"><font color="black">Intermediate City 2</font></label>
+    <input type="text" name="ic2" class="form-control" id="inputICity2">
+  </div>
+  <div class="col-md-4">
+    <label for="inputITime2" class="form-label"><font color="black">Corresponding Time</font></label>
+    <input type="text" name="ic_time2" placeholder="YYYY-MM-DD HH:MI:SS" class="form-control" id="inputITime2">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICost2" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="ic_c2" placeholder="Cost in rupees" class="form-control" id="inputICost2">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICity3" class="form-label"><font color="black">Intermediate City 3</font></label>
+    <input type="text" name="ic3" class="form-control" id="inputICity3">
+  </div>
+  <div class="col-md-4">
+    <label for="inputITime3" class="form-label"><font color="black">Corresponding Time</font></label>
+    <input type="text" name="ic_time3" placeholder="YYYY-MM-DD HH:MI:SS" class="form-control" id="inputITime3">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICost3" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="ic_c3" placeholder="Cost in rupees" class="form-control" id="inputICost3">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICity4" class="form-label"><font color="black">Intermediate City 4</font></label>
+    <input type="text" name="ic4" class="form-control" id="inputICity4">
+  </div>
+  <div class="col-md-4">
+    <label for="inputITime4" class="form-label"><font color="black">Corresponding Time</font></label>
+    <input type="text" name="ic_time4" placeholder="YYYY-MM-DD HH:MI:SS" class="form-control" id="inputITime4">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICost4" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="ic_c4" placeholder="Cost in rupees" class="form-control" id="inputICost4">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICity5" class="form-label"><font color="black">Intermediate City 5</font></label>
+    <input type="text" name="ic5" class="form-control" id="inputICity5">
+  </div>
+  <div class="col-md-4">
+    <label for="inputITime5" class="form-label"><font color="black">Corresponding Time</font></label>
+    <input type="text" name="ic_time5" placeholder="YYYY-MM-DD HH:MI:SS" class="form-control" id="inputITime5">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICost5" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="ic_c5" placeholder="Cost in rupees" class="form-control" id="inputICost5">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICity6" class="form-label"><font color="black">Intermediate City 6</font></label>
+    <input type="text" name="ic6" class="form-control" id="inputICity6">
+  </div>
+  <div class="col-md-4">
+    <label for="inputITime6" class="form-label"><font color="black">Corresponding Time</font></label>
+    <input type="text" name="ic_time6" placeholder="YYYY-MM-DD HH:MI:SS" class="form-control" id="inputITime6">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICost6" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="ic_c6" placeholder="Cost in rupees" class="form-control" id="inputICost6">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICity7" class="form-label"><font color="black">Intermediate City 7</font></label>
+    <input type="text" name="ic7" class="form-control" id="inputICity7">
+  </div>
+  <div class="col-md-4">
+    <label for="inputITime7" class="form-label"><font color="black">Corresponding Time</font></label>
+    <input type="text" name="ic_time7" placeholder="YYYY-MM-DD HH:MI:SS" class="form-control" id="inputITime7">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICost7" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="ic_c7" placeholder="Cost in rupees" class="form-control" id="inputICost7">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICity8" class="form-label"><font color="black">Intermediate City 8</font></label>
+    <input type="text" name="ic8" class="form-control" id="inputICity8">
+  </div>
+  <div class="col-md-4">
+    <label for="inputITime8" class="form-label"><font color="black">Corresponding Time</font></label>
+    <input type="text" name="ic_time8" placeholder="YYYY-MM-DD HH:MI:SS" class="form-control" id="inputITime8">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICost8" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="ic_c8" placeholder="Cost in rupees" class="form-control" id="inputICost8">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICity9" class="form-label"><font color="black">Intermediate City 9</font></label>
+    <input type="text" name="ic9" class="form-control" id="inputICity9">
+  </div>
+  <div class="col-md-4">
+    <label for="inputITime9" class="form-label"><font color="black">Corresponding Time</font></label>
+    <input type="text" name="ic_time9" placeholder="YYYY-MM-DD HH:MI:SS" class="form-control" id="inputITime9">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICost9" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="ic_c9" placeholder="Cost in rupees" class="form-control" id="inputICost9">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICity10" class="form-label"><font color="black">Intermediate City 10</font></label>
+    <input type="text" name="ic10" class="form-control" id="inputICity10">
+  </div>
+  <div class="col-md-4">
+    <label for="inputITime10" class="form-label"><font color="black">Corresponding Time</font></label>
+    <input type="text" name="ic_time10" placeholder="YYYY-MM-DD HH:MI:SS" class="form-control" id="inputITime10">
+  </div>
+  <div class="col-md-4">
+    <label for="inputICost10" class="form-label"><font color="black">Cost</font></label>
+    <input type="text" name="ic_c10" placeholder="Cost in rupees" class="form-control" id="inputICost10">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+<br>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
